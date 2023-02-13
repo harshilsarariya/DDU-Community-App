@@ -15,10 +15,10 @@ const TabNavigation = () => {
             // headerShown: false,
           }
         }
-        initialRouteName="Home"
+        initialRouteName="GroupNavigation"
       >
         <Tab.Screen
-          name="Home"
+          name="HomeNavigation"
           options={
             {
               // tabBarStyle: { display: "none" },
@@ -28,7 +28,7 @@ const TabNavigation = () => {
           {(props) => <HomeNavigation />}
         </Tab.Screen>
         <Tab.Screen
-          name="Club"
+          name="ClubNavigation"
           options={
             {
               // tabBarStyle: { display: "none" },
@@ -38,12 +38,11 @@ const TabNavigation = () => {
           {(props) => <ClubNavigation />}
         </Tab.Screen>
         <Tab.Screen
-          name="Group"
-          options={
-            {
-              // tabBarStyle: { display: "none" },
-            }
-          }
+          name="GroupNavigation"
+          options={{
+            // tabBarStyle: { display: "none" },
+            headerShown: false,
+          }}
         >
           {(props) => <GroupNavigation />}
         </Tab.Screen>
