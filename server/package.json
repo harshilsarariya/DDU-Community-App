@@ -1,12 +1,22 @@
 {
-  "name": "server",
+  "name": "ddu-community-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "this is ddu-community app. which is build by react-native, node-js, mongodb, mongoose, express-js, git&gituhb",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/app.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "4-team-members",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.1",
+    "cookie-session": "^2.0.0",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.1",
+    "passport": "^0.5.0",
+    "passport-google-oauth2": "^0.2.0",
+    "validator": "^13.9.0"
+  }
 }
