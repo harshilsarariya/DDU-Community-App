@@ -4,26 +4,29 @@ import { useNavigation } from "@react-navigation/native";
 import Group from "../screen/Group";
 import GroupChat from "../components/Group/GroupChat";
 import Home from "../screen/Home";
+import AddPost from "../screen/AddPost";
 
 const Stack = createStackNavigator();
 
 const HomeNavigation = () => {
-  const navigation = useNavigation();
+	const navigation = useNavigation();
 
-  return (
-    <Stack.Navigator
-      screenOptions={{ headerShown: true, headerTitle:"Home" }}
-      initialRouteName="Post"
-    >
-      <Stack.Screen name="Post">
-        {(props) => <Home navigation={navigation} />}
-      </Stack.Screen>
-      <Stack.Screen name="Profile">
-        {(props) => <GroupChat navigation={navigation} />}
-      </Stack.Screen>
-    </Stack.Navigator>
-    
-  );
+	return (
+		<Stack.Navigator
+			screenOptions={{ headerShown: true, headerTitle: "Home" }}
+			initialRouteName="Post"
+		>
+			<Stack.Screen name="Post">
+				{(props) => <Home navigation={navigation} />}
+			</Stack.Screen>
+			<Stack.Screen name="Profile">
+				{(props) => <GroupChat navigation={navigation} />}
+			</Stack.Screen>
+			<Stack.Screen name="AddPost">
+				{(props) => <AddPost navigation={navigation} />}
+			</Stack.Screen>
+		</Stack.Navigator>
+	);
 };
 
 export default HomeNavigation;
