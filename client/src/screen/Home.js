@@ -1,12 +1,14 @@
-import { View, Text, Image, ScrollView, TextInput } from "react-native";
+import { View, Text, Image, ScrollView, TextInput, TouchableOpacity } from "react-native";
 import React from "react";
 import { EvilIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 const Home = () => {
   return (
-    <ScrollView className="bg-white">
+    <View className="relative">
+    <ScrollView className="bg-white -z-30">
     <View className="flex space-y-4">
       {[...Array(8)].map((val, idx) => {
         return (
@@ -17,6 +19,10 @@ const Home = () => {
       })}
       </View>
     </ScrollView>
+      <TouchableOpacity className="absolute bottom-4 bg-sky-500 rounded-full flex justify-center items-center w-12 h-12 right-4 z-50">
+      <AntDesign name="plus" size={30} color="white" />
+        </TouchableOpacity>
+      </View>
   );
 };
 

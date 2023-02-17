@@ -53,19 +53,21 @@ const Introslider = ({ navigation }) => {
                 style={{
                     flex: 1,
                     backgroundColor: item.backgroundColor,
-                    alignItems: 'center',
-                    justifyContent: "space-evenly",
-                    paddingBottom: 100,
+                    // alignItems: 'center',
+                    justifyContent:"center",
+                    paddingBottom: 20,
+                    paddingTop:40,
+                    // paddingHorizontal:20
                 }}>
-                <View className="flex items-center space-y-4">
-                <View className="bg-rose-300 rounded-full relative">
-                    <Image className="z-50 w-80 h-80" source={item.image} />
+                <View className="flex space-y-4">
+                <View className="rounded-full basis-2/3 h-full">
+                    <Image className="z-50 w-full h-full object-cover" source={item.image} />
                     {/* <View className="h-10 w-10 bg-yellow-400 absolute top-0 right-16 rounded-full"></View> */}
                     {/* <View className="h-20 w-20 bg-blue-700 absolute bottom-0 left-6 rounded-full"></View> */}
                 </View>
-                <View className="flex items-center w-80 space-y-6">
-                <Text className="text-4xl font-semibold tracking-widest text-center leading-12">{item.title}</Text>
-                <Text className="w-72 text-center text-xl">{item.text}</Text>
+                <View className="flex space-y-2 basis-1/3 px-8">
+                <Text className="text-4xl text-left font-semibold tracking-widest leading-12">{item.title}</Text>
+                <Text className="text-xl">{item.text}</Text>
                 </View>
                 </View>
             </View>
@@ -74,11 +76,6 @@ const Introslider = ({ navigation }) => {
 
     return (
         <>
-            {/* {showRealApp ? (
-                <SafeAreaView style={styles.container}>
-                    <Loginpage  />
-                </SafeAreaView>
-            ) : ( */}
             <AppIntroSlider
                 data={slides}
                 renderItem={RenderItem}
@@ -90,7 +87,6 @@ const Introslider = ({ navigation }) => {
                     width: 18,
                 }}
                 activeDotStyle={{ backgroundColor: '#808080' }}
-                // renderNextButton={()=>buttonLabel("Next")}
                 renderNextButton={() => {
                     return (
                         <View style={{ marginTop: 10 }} >
@@ -146,21 +142,21 @@ const styles = StyleSheet.create({
 const slides = [
     {
         key: 's1',
-        text: 'Choose what bothers you and we will provide the solution',
-        title: 'Personal Treatment Plan',
-        image: require('../../assets/images/avatar.jpg'),
+        text: 'Join an existing creative association or create your own',
+        title: 'Find comfy and like-minded people',
+        image: require('../../assets/images/community.gif'),
     },
     {
         key: 's2',
-        title: 'Automatic reminders',
-        text: 'No need to remember the medicines as we will remind you',
-        image: require('../../assets/images/avatar.jpg'),
+        title: 'Enjoy and learn new skills',
+        text: 'Participate in activities of other authors or purchase ready-made mini-courses',
+        image: require('../../assets/images/learn.gif'),
     },
     {
         key: 's3',
-        title: 'Book Appointments',
-        text: 'Book your upcoming visit to clinic instantly by just few clicks',
-        image: require('../../assets/images/avatar.jpg'),
+        title: 'Organize your own events',
+        text: 'Or broadcast creative processes by communicating with the audience online',
+        image: require('../../assets/images/event.gif'),
     },
 
 ];

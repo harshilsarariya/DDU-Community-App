@@ -6,6 +6,8 @@ import GroupNavigation from "./GroupNavigation";
 import ClubNavigation from "./ClubNavigation";
 import EventNavigation from "./EventNavigation";
 import ResourceNavigation from "./ResourceNavigation";
+import { AntDesign } from '@expo/vector-icons';
+import { TouchableOpacity, View } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -47,34 +49,6 @@ const TabNavigation = () => {
             </>
         )
       })}
-        {/* <Tab.Screen
-          name="HomeNavigation"
-          options={
-            {
-              // tabBarStyle: { display: "none" },
-            }
-          }
-        >
-          {(props) => <HomeNavigation />}
-        </Tab.Screen>
-        <Tab.Screen
-          name="ClubNavigation"
-          options={
-            {
-              // tabBarStyle: { display: "none" },
-            }
-          }
-        >
-          {(props) => <ClubNavigation />}
-        </Tab.Screen>
-        <Tab.Screen
-          name="GroupNavigation"
-          options={{
-            // tabBarStyle: { display: "none" },
-            headerShown: false,
-          }}
-        >
-          {(props) => <GroupNavigation />} */}
       </Tab.Navigator>
     </>
   );

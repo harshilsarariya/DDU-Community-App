@@ -22,6 +22,7 @@ const HomeNavigation = () => {
         {(props) => <GroupChat navigation={navigation} />}
       </Stack.Screen>
     </Stack.Navigator>
+    
   );
 };
 
