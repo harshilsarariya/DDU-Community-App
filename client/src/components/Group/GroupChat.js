@@ -48,7 +48,7 @@ const GroupChat = () => {
             <View className="ml-5 w-9/12 flex flex-row justify-between items-center">
               <View className="">
                 <Text className="font-bold text-lg">{item.title}</Text>
-                <Text className="text-[#9a9a9a]">Online </Text>
+                {/* <Text className="text-[#9a9a9a]">Online </Text> */}
               </View>
               <View className="flex flex-row  items-center space-x-2">
                 <Ionicons name="call-outline" size={20} color="#a8a8a9" />
@@ -97,6 +97,7 @@ const GroupChat = () => {
                 let msgs = messages;
                 msgs.push({ sender: me, msg: text });
                 setmessages(msgs);
+                setText("")
                 setKey(Math.random());
               }}
             >
