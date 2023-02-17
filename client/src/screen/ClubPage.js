@@ -3,51 +3,47 @@ import { Image, ScrollView, Text, TouchableWithoutFeedback, View } from "react-n
 const ClubPage = ({ navigation }) => {
   return (
     <>
-      <ScrollView className="pt-10 bg-white">
+      <ScrollView className="py-10 bg-white">
         <View className="px-4">
           <View>
-            <Text className="text-2xl font-semibold">Profile</Text>
+            <Text className="text-2xl font-semibold my-4">Profile</Text>
           </View>
-          <View className="flex flex-row items-center mt-6 space-x-4 justify-between">
-            <View className="">
-                <Image className="h-24 rounded-full w-24" source={require("../../assets/images/avatar.jpg")} />
+          <View className="flex flex-row items-center mt-6 space-x-4 justify-between ">
+            <View className="border-2 border-violet-500 overflow-hidden flex items-center justify-center h-24 w-24 p-2 rounded-full">
+                <Image className="h-full rounded-full w-full" source={require("../../assets/images/clubs/dduconnect.png")} />
             </View>
-            <View className="flex flex-row basis-3/4 flex-1 justify-between">
-                <TouchableWithoutFeedback className="basis-1/3">
+            <View className="flex flex-row basis-3/4 flex-1 justify-evenly">
+                <TouchableWithoutFeedback className="basis-1/2">
                 <View className="flex">
-                    <Text className="text-center text-lg font-medium">3</Text>
+                    <Text className="text-center text-lg font-medium">14</Text>
                     <Text className="text-center text-lg">Posts</Text>
                 </View>
                 </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback className="basis-1/3 flex-1">
+                <TouchableWithoutFeedback className="basis-1/2 flex-1">
                    <View className="flex">
                     <Text className="text-center text-lg font-medium">355</Text>
                     <Text className="text-center text-lg">Followers</Text>
                    </View>
                 </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback className="basis-1/3 flex-1">
-                <View className="flex">
-                    <Text className="text-center text-lg font-medium">523</Text>
-                    <Text className="text-center text-lg">Following</Text>
-                </View>
-                </TouchableWithoutFeedback>
             </View>
           </View>
           <View className="mt-4">
-            <Text className="font-medium text-lg">Shutterbugs</Text>
+            <Text className="font-medium text-lg">DDUConnect</Text>
             <Text>The Official photography club of DDU</Text>
-            <Text className="text-justify">fhjhf fyguhkvjg fgjhfgfd fkj udgfhfdhfusdhfdsf fuyfdhskfjsh udfghfjsg fudfgjdfhgjd gfhdsfkjdhkf hfkhdfkjd ughkdjfghkdufh uyfhughfkjg ufhgkhfguhdflkfgoifkdf ugyfkjbdfodnfd fuyofijdsjfgu ifyugydjfnd ufdyguiyhgif oeuriuelasf dfiugug</Text>
+            <Text className="text-justify">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</Text>
           </View>
-          <View className="mt-4">
+          <View className="mt-2">
             <Text className="text-xl font-medium">Posts</Text>
           </View>
         </View>
-            <View className="flex flex-row flex-wrap space-x-1 space-y-1 mt-6">
+            <View className="flex flex-row flex-wrap space-x-1 space-y-1 mt-2">
                 {[...Array(14)].map((val,idx)=> {
                     return(
                         <>
-                        <TouchableWithoutFeedback  onPress={() => navigation.navigate("Home")}>
-                            <Image className="basis-1/3 h-32" source={require("../../assets/images/club.jpg")} />
+                        <TouchableWithoutFeedback>
+                        <View className="h-32 w-1/3 p-1">
+                            <Image className="h-full w-full" source={{uri:`https://picsum.photos/200/300?random=${idx+1}`}} />
+                        </View>
                         </TouchableWithoutFeedback>
                         </>
                     )

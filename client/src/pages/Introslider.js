@@ -61,7 +61,7 @@ const Introslider = ({ navigation }) => {
                 }}>
                 <View className="flex space-y-4">
                 <View className="rounded-full basis-2/3 h-full">
-                    <Image className="z-50 w-full h-full object-cover" source={item.image} />
+                    <Image className="z-50 w-full h-full" source={item.image} />
                     {/* <View className="h-10 w-10 bg-yellow-400 absolute top-0 right-16 rounded-full"></View> */}
                     {/* <View className="h-20 w-20 bg-blue-700 absolute bottom-0 left-6 rounded-full"></View> */}
                 </View>

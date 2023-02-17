@@ -24,7 +24,7 @@ const Loginpage = (props) => {
     <>
       <View className="bg-white h-full">
         <Image
-          className="h-96 w-screen"
+          className="h-2/5 w-screen"
           source={require("../../assets/images/login.jpg")}
         />
         <View className="py-8 px-8">
