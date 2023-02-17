@@ -4,18 +4,18 @@ import TabNavigation from "./src/navigation/TabNavigation";
 import AppNavigator from "./src/pages/AppNavigator";
 
 export default function App() {
-  return (
-    <>
-      <StatusBar style="dark" />
-      <NavigationContainer
-        theme={{
-          ...DefaultTheme,
-          // colors: { ...DefaultTheme.colors, background: "#1E2128" },
-        }}
-      >
-        {/* <TabNavigation /> */}
-        <AppNavigator/>
-      </NavigationContainer>
-    </>
-  );
+	return (
+		<>
+			<StatusBar style="dark" />
+			<NavigationContainer
+				theme={{
+					...DefaultTheme,
+					// colors: { ...DefaultTheme.colors, background: "#1E2128" },
+				}}
+			>
+				{/* <TabNavigation /> */}
+				<AppNavigator />
+			</NavigationContainer>
+		</>
+	);
 }
