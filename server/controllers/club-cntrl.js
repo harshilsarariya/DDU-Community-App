@@ -1,8 +1,6 @@
 const ClubCollection = require("../src/models/club-schema");
 const StudentCollection = require("../src/models/student-schema");
 
-
-
 module.exports = {
 
     createClub: async (req, res) => {
@@ -150,6 +148,56 @@ module.exports = {
         }
     },
 
+    getMembers: async (req, res) => {
+        try {
+
+            let club = await ClubCollection.findOne({ _id: req.body.club_id });
+
+            let members = club.member_list;
+            let admins = club.admin_list;
+
+            let adminIdSet = new Set();
+            admins.forEach((admin, indx) => {
+                adminIdSet.add(admin.admin_id.toString());
+            });
+
+            members.forEach((member, indx) => {
+                if (adminIdSet.has(member.member_id.toString())) members.splice(indx, 1);
+            });
+            adminIdSet.clear();
+
+            let memberNames = new Array();
+            for (i = 0; i < members.length; i++) {
+                let nameObj = await StudentCollection.findOne({ _id: members[i].member_id }).select({ name: 1, ddu_id: 1 });
+                memberNames.push(nameObj);
+            }
+
+            res.status(201).send(memberNames);
+
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
+    getAdmins: async (req, res) => {
+        try {
+
+            let club = await ClubCollection.findOne({ _id: req.body.club_id });
+            let admins = club.admin_list;
+
+            let adminNames = new Array();
+            for (i = 0; i < admins.length; i++) {
+                let nameObj = await StudentCollection.findOne({ _id: admins[i].admin_id }).select({ name: 1, ddu_id: 1 });
+                adminNames.push(nameObj);
+            }
+
+            res.status(201).send(adminNames);
+
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
     deleteMember: async (req, res) => {
 
         let student = await StudentCollection.findOne({ _id: req.body.member_id || req.body.admin_id });
@@ -274,6 +322,63 @@ module.exports = {
         } catch (error) {
             console.log(error);
         }
-    }
+    },
 
+    memberToadmin: async (req, res) => {
+        try {
+
+            let club = await ClubCollection.findOne({ _id: req.body.club_id });
+            let admins = club.admin_list;
+
+            admins.push({ admin_id: req.body.member_id });
+
+            await ClubCollection.updateOne(
+                { _id: req.body.club_id },
+                { $set: { admin_list: admins } }
+            );
+
+            res.status(201).send("new admin enters successfully !!!");
+
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
+    getClubCreator: async (req, res) => {
+        try {
+            let club = await ClubCollection.findOne({ _id: req.body.club_id });
+            let clubCreator = await StudentCollection.findOne({ _id: club.club_creator }).select({ name: 1, ddu_id: 1 });
+
+            res.status(201).send(clubCreator);
+
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
+    changeClubCreator: async (req, res) => {
+        try {
+            let club = await ClubCollection.findOne({ _id: req.body.club_id });
+            let admins = club.admin_list;
+
+            let isAdmin = false;
+            for (i = 0; i < admins.length; i++) {
+                if (admins[i].admin_id.toString() === req.body.new_club_creator_id) {
+                    isAdmin = true;
+                    break;
+                }
+            }
+            if (!isAdmin) return res.status(503).send("not possible:)\nHe/She is not a admin");
+
+            await ClubCollection.updateOne(
+                { _id: req.body.club_id },
+                { $set: { club_creator: req.body.new_club_creator_id } }
+            );
+
+            res.status(201).send("successfully change club creator");
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
 };
