@@ -16,6 +16,9 @@ const student_router = require('./routers/student-router');
 app.get("/", landing_router);
 app.post("/login", landing_router);
 app.get("/auth", google_auth_router);
+app.get("/auth/callback", google_auth_router);
+app.get("/auth/callback/success", google_auth_router);
+app.get("/auth/callback/failure", google_auth_router);
 
 
 // students
@@ -30,19 +33,21 @@ app.put("/update-club", club_router);
 app.delete("/delete-club", club_router);
 
 app.post("/club/add-member", club_router);
+app.post("/club/get-members", club_router);
 app.delete("/club/remove-member", club_router);
+
 app.post("/club/add-admin", club_router);
+app.post("/club/get-admins", club_router);
 app.delete("/club/remove-admin", club_router);
 
 app.post("/club/add-announcement", club_router);
 app.post("/club/get-announcement", club_router);
 app.delete("/club/delete-announcement", club_router);
 
-app.post("/club/add-announcement", club_router);
-app.delete("/club/delete", club_router);
+app.post("/club/get-club-creator", club_router);
+app.put("/club/update-club-creator", club_router);
 
-app.post("/club/add-member", club_router);
-
+app.post("/club/member-to-admin", club_router);
 
 app.listen(PORT, (req, res) => {
     console.log(`server runs on http://127.0.0.1:${PORT}`);
